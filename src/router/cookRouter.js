@@ -13,6 +13,8 @@ router.post('/cook/create',auth,async (req,res)=>{
         res.status(500).send()
     }
 })
+//GET :/cook?L=locationNAME&sL=sub_locationNAME
+
 router.get('/cook',auth,async (req,res)=>{
     const L = req.query.L
     const sL = req.query.sL
@@ -21,6 +23,10 @@ router.get('/cook',auth,async (req,res)=>{
         if(!cookd){
             throw new Error()
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> f119ae13182a55acf9af9baf3cf5c56b4e4648c8
         res.send(cookd)
     }
     catch(e){
@@ -28,6 +34,7 @@ router.get('/cook',auth,async (req,res)=>{
     }
 })
 
+<<<<<<< HEAD
 // GET :/cook/id
 router.get('/cook/:id',async (req,res)=>{
     const _id = req.params.id
@@ -44,3 +51,6 @@ router.get('/cook/:id',async (req,res)=>{
 })
 
 module.exports = router
+=======
+module.exports = router
+>>>>>>> f119ae13182a55acf9af9baf3cf5c56b4e4648c8
