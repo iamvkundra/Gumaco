@@ -13,6 +13,8 @@ router.post('/cook/create',auth,async (req,res)=>{
         res.status(500).send()
     }
 })
+//GET :/cook?L=locationNAME&sL=sub_locationNAME
+
 router.get('/cook',auth,async (req,res)=>{
     const L = req.query.L
     const sL = req.query.sL
