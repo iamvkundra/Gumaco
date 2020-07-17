@@ -18,10 +18,27 @@ router.get('/cook',auth,async (req,res)=>{
     const sL = req.query.sL
     try{
         const cookd = await cook.find({Location:L,SLocation:sL})
-        
+        if(!cookd){
+            throw new Error()
+        }
         res.send(cookd)
     }
     catch(e){
+        res.status(500).send()
+    }
+})
+
+// GET :/cook/id
+router.get('/cook/:id',async (req,res)=>{
+    const _id = req.params.id
+    try{
+        const cookdata = await cook.findOne({_id:_id})
+        if(!cookdata){
+            throw new Error()
+        }
+        res.send(cookdata)
+
+    }catch(e){
         res.status(500).send()
     }
 })
