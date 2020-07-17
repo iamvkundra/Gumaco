@@ -20,6 +20,9 @@ router.get('/cook',auth,async (req,res)=>{
     const sL = req.query.sL
     try{
         const cookd = await cook.find({Location:L,SLocation:sL})
+        if(!cookd){
+            throw new Error()
+        }
         
         res.send(cookd)
     }
