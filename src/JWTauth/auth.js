@@ -5,7 +5,7 @@ const auth = async (req,res,next)=>{
   
   try{
      const token = req.header('Authorization').replace('Bearer ', '')
-    const decode = jwt.verify(token,"gumaco.com")
+    const decode = jwt.verify(token,process.env.SECRET_KEY)
     const user1 = await user.findOne({'_id':decode._id,'tokens.token':token})
     if(!user1){
         throw new Error()

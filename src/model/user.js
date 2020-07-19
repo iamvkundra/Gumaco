@@ -47,12 +47,12 @@ UserSchema.methods.toJSON =function(){
     const user = this
     const userObject = user.toObject()
     delete userObject.password
-   // delete userObject.tokens
+    delete userObject.tokens
     return userObject
 }
 UserSchema.methods.generateToken = async function(){
     const user = this
-    const token = jwt.sign({_id:user._id.toString()},"gumaco.com")
+    const token = jwt.sign({_id:user._id.toString()},process.env.SECRET_KEY)
     user.tokens = user.tokens.concat({token})
     await user.save()
     return token
