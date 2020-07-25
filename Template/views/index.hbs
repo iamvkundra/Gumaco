@@ -3,12 +3,12 @@
         <title>Login</title>
     </head>
     <body>
-        <h2>1{{page}}</h2>
-        <form>
-            Username:<input type="text" name='username' >
-            password:<input type="text" name="pass">
+        <h2>{{page}}</h2>
+        <form enctype='application/json', action="/user/login", method="POST">
+            Username:<input type="text" name="Number" >
+            password:<input type="text" name="password">
 
-            <button type="submit"></button>
+            <input type="submit" value="done">
         </form>
     </body>
 

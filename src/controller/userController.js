@@ -15,7 +15,9 @@ exports.userRegister = async function(req,res){
 
 exports.userLogin = async function(req,res){
     try{
+        console.log(req.body)
         const userEmail = await user.getTheAuthentication(req.body.Number,req.body.password)
+        console.log(userEmail)
         const token = await userEmail.generateToken()
         if(!userEmail){
                 res.status(404).send()
