@@ -3,6 +3,17 @@ const router = new express.Router()
 const cook = require('../model/cook')
 const auth = require('../JWTauth/auth')
 
+router.post('/cook/search',auth,async (req,res)=>{
+    const place_name =req.query.place_name
+    const longitude = req.query.longitude
+    const latitude = req.query.latitude
+    try{
+    res.send({place_name,longitude,latitude})
+    }catch(e){
+        res.status(500).send()
+    }
+})
+
 router.post('/cook/create',auth,async (req,res)=>{
     const cookdata = new cook(req.body)
     try{

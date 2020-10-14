@@ -22,7 +22,11 @@ exports.userLogin = async function(req,res){
         if(!userEmail){
                 res.status(404).send()
            }
-           res.send({userEmail,token})
+           res.cookie('access_token',token,{
+               maxAge:300000,
+               httpOnly:true
+           })
+           res.status(200).send({userEmail,token})
         }catch(e){
             res.status(404).send()
         }
